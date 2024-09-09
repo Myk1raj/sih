@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Animation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="background">
+        <div class="main">
+            <canvas id="animationCanvas" width="800" height="200"></canvas>
+            <div class="button-container">
+                <button id="redirectButton" class="start-button">Start ReDACTing <span>&rarr;</span></button>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        document.getElementById('redirectButton').addEventListener('click', function() {
+            window.location.href = '/home';
+        });
+    </script>
+</body>
+</html>

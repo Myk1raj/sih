@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Key-Value Pair Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        html{
+            height:100%;
+            box-sizing:border-box;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: lightblue;
+            border-bottom: 2px solid darkblue;
+            padding: 10px 100px;
+            color: white;
+            z-index: 1000;
+        }
+        .navbar img {
+            height: 40px;
+            margin-right: 10px;
+            z-index: 1000;
+        }
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+        }
+        .navbar h1 {
+            margin: 0;
+            color: darkblue;
+            font-size: 24px;
+            z-index: 1000;
+        }
+        .navbar .dropdown {
+            position: relative;
+            display: inline-block;
+            z-index: 1000;
+        }
+        .dropbtn {
+            background-color: darkblue;
+            color: rgb(245, 198, 198);
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            z-index: 1000;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #ddd;
+            z-index: 1000;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            z-index: 1000;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+            z-index: 1000;
+        }
+        .footer {
+            background-color: lightblue;
+            border-top: 2px solid darkblue;
+            text-align: center;
+            padding: 20px;
+            color: darkblue;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 100px;
+            margin-top: 35px;
+            position:absolute;
+            right:0;
+            left:0;
+            bottom: 0;
+        }
+        .footer .logo {
+            display: flex;
+            align-items: center;
+        }
+        .footer img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .footer .social-icons a {
+            margin: 0 10px;
+            color: darkblue;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+        .middle{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            margin-top:50px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        select {
+            appearance: none;
+            padding: 10px;
+            background: #fff;
+            background-image: linear-gradient(45deg, transparent 50%, #0056b3 50%), linear-gradient(135deg, #0056b3 50%, transparent 50%);
+            background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px);
+            background-size: 5px 5px, 5px 5px;
+            background-repeat: no-repeat;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            color: #333;
+        }
+        button {
+            background-color: #0056b3;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #041628;
+        }
+        body {
+            background-image: url('static/back.jpg');
+            background-size: contain;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background: #f5f5f5;
+            position:relative ;
+            margin:0;
+            min-height:100%;
+            padding-bottom:6.74rem;
+            box-sizing:inherit;
+        }
+        .result-card {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.75); /* Translucent white background */
+            border:2px solid black;
+            height:400px;
+            width:600px;
+            padding:50px;
+        }
+        .btn-primary {
+            margin-top: 20px;
+        }
+        .key-value-pair {
+            text-align: left;
+            margin-top: 20px;
+        }
+        .key-value-pair div {
+            margin-bottom: 10px;
+        }
+        .key-value-pair span.key {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="static/logo.png" alt="Logo">
+        </div>
+        <div>
+            <h1>ReDACT</h1>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+                <a href="/">Home</a>
+                <a href="/about">About(CKD)</a>
+                <a href="/model">Model</a>
+                <a href="/dataset">Dataset</a>
+            </div>
+        </div>
+    </div>
+    <div class='middle'>
+        <div class="result-card">
+            <h1>Image Key-Value Pair Result</h1>
+            <div class="key-value-pair">
+                <p><h3><u>{{ prediction_text }}</u></h1></p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="logo">
+            <img src="static/logo.png" alt="Logo">
+        </div>
+        <div>&copy; 2024 ReDACT. All rights reserved.</div>
+        <div class="social-icons">
+            <a href="https://github.com" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.865 8.167 6.839 9.491.5.092.682-.217.682-.482 0-.237-.009-.865-.013-1.699-2.782.605-3.368-1.342-3.368-1.342-.455-1.153-1.111-1.461-1.111-1.461-.909-.62.069-.607.069-.607 1.004.071 1.53 1.03 1.53 1.03.891 1.527 2.34 1.087 2.912.83.091-.645.349-1.087.634-1.336-2.22-.252-4.555-1.108-4.555-4.932 0-1.09.39-1.984 1.029-2.682-.103-.251-.447-1.268.097-2.642 0 0 .84-.268 2.75 1.022a9.607 9.607 0 0 1 2.508-.336c.855.003 1.715.118 2.508.336 1.91-1.29 2.751-1.022 2.751-1.022.544 1.374.199 2.39.097 2.642.639.698 1.029 1.591 1.029 2.682 0 3.834-2.339 4.676-4.566 4.926.361.314.682.929.682 1.868 0 1.347-.013 2.438-.013 2.768 0 .27.18.578.688.48A9.958 9.958 0 0 0 22 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"/>
+                </svg>
+            </a>
+            <a href="https://twitter.com" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M24 4.557a9.975 9.975 0 0 1-2.829.775A4.93 4.93 0 0 0 23.337 3a9.867 9.867 0 0 1-3.127 1.191A4.933 4.933 0 0 0 16.62 3a4.935 4.935 0 0 0-4.92 4.92c0 .387.043.765.126 1.126A13.975 13.975 0 0 1 1.671 3.139a4.935 4.935 0 0 0 1.526 6.582A4.908 4.908 0 0 1 .964 9.84v.062a4.934 4.934 0 0 0 3.949 4.832 4.97 4.97 0 0 1-2.228.085A4.935 4.935 0 0 0 5.91 15.4a9.877 9.877 0 0 1-6.11 2.108A10.06 10.06 0 0 1 0 17.47a13.942 13.942 0 0 0 7.557 2.212c9.075 0 14.037-7.525 14.037-14.037 0-.21-.005-.42-.015-.628A10.046 10.046 0 0 0 24 4.557z" clip-rule="evenodd"/>
+                </svg>
+            </a>
+            <a href="https://facebook.com" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M22 12.08c0 5.01-4.08 9.08-9.08 9.08-5 0-9.08-4.08-9.08-9.08 0-5 4.08-9.08 9.08-9.08 5 0 9.08 4.08 9.08 9.08zm-7.82 1.18h-1.84v5.6h-2.24v-5.6h-1.36v-2.48h1.36v-1.48c0-1.42.34-2.32 2.08-2.32l1.4.02v2.1h-1.2c-.72 0-1.06.35-1.06 1.04v1.34h2.24l-.3 2.48z" clip-rule="evenodd"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
